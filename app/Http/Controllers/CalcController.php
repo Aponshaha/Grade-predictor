@@ -23,6 +23,8 @@ class CalcController extends Controller
         $c = new Calculator(); 
 
         $z = $c->multiplication($a,$b);
+        $t = $c->multiplication($c1,$d);
+        $z = $z+$t;
         //$b=$b+$c;
         
         $x = $c->sum($b,$c1); 
@@ -30,16 +32,18 @@ class CalcController extends Controller
         $y=$c->sum($z,$d);
 
 
-        $result=$c->div($y,$x);
+        $result=round($c->div($y,$x),2);
 
-          echo "your new CGPA is:",$result;  
-          echo "Credit completed ",$x;
+
+
 
  
 
-        $z = $a;
-        $x = $b;
-        return view('calc');
+        $a = $z;
+        $b = $x;
+
+
+        return view('calc',['result'=>$result],['x'=>$x]);
 
         
     }
